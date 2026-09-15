@@ -7,102 +7,168 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
-header{background:#17202a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
-h1{margin:0;font-size:21px}.wrap{max-width:1180px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 5px 20px #0000000b;margin-bottom:18px}
-input,select,textarea,button{width:100%;padding:11px;border:1px solid #d7dce2;border-radius:9px;font:inherit}textarea{min-height:90px}
-button{background:#17202a;color:#fff;border:0;cursor:pointer;font-weight:600}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-label{font-size:13px;font-weight:600;display:block;margin-bottom:5px}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tabs button{width:auto;white-space:nowrap}.tabs button.active{background:#7a5c38}
-table{width:100%;border-collapse:collapse;margin-top:12px}th,td{padding:9px;border-bottom:1px solid #edf0f3;text-align:left;font-size:13px}th{color:#6b7280}
-.muted{color:#6b7280;font-size:13px}.hidden{display:none}.login{max-width:420px;margin:10vh auto}.msg{padding:10px;border-radius:9px;background:#fff4e5;margin:10px 0;font-size:14px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#fff;padding:16px;border-radius:12px}.stat b{display:block;font-size:25px;margin-top:5px}
-@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}header{padding:15px}.wrap{margin:15px auto}}
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1e293b;--muted:#64748b;--line:#e5e7eb;--dark:#18212f;--accent:#b88a44;--accent2:#8d682f;--ok:#16835b;--danger:#c24141}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.login{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#18212f,#273447)}
+.loginbox{width:min(430px,92vw);background:#fff;border-radius:22px;padding:34px;box-shadow:0 25px 70px #0004}.logo{font-size:27px;font-weight:800}.gold{color:var(--accent)}
+.field{margin:14px 0}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff;outline:none}.field textarea{min-height:90px;resize:vertical}
+.primary{background:var(--accent);color:#fff;border:0;border-radius:11px;padding:12px 17px;font-weight:700}.primary:hover{background:var(--accent2)}
+.app{display:none;min-height:100vh}.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:var(--dark);color:#dbe3ed;padding:24px 15px;z-index:5}.brand{padding:0 10px 25px;border-bottom:1px solid #ffffff18;margin-bottom:15px}.brand strong{display:block;font-size:20px;color:#fff}.brand small{color:#aeb9c8}.nav button{width:100%;background:none;border:0;color:#bdc8d6;text-align:left;padding:12px 13px;border-radius:10px;margin:2px 0}.nav button.active,.nav button:hover{background:#ffffff12;color:#fff}.nav .section{font-size:11px;text-transform:uppercase;color:#758398;margin:20px 12px 7px}
+.main{margin-left:245px;padding:25px 30px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.top h1{margin:0;font-size:25px}.userpill{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:12px}.logout{border:0;background:#eef1f5;padding:7px 10px;border-radius:8px}
+.page{display:none}.page.active{display:block}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:19px}.stat{font-size:29px;font-weight:800;margin:8px 0}.muted{color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px}.panel h3{margin:0 0 15px}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;white-space:nowrap}.table th{color:var(--muted);font-weight:600}.toolbar{display:flex;gap:10px;justify-content:space-between;margin-bottom:15px}.search{width:300px;max-width:60%;padding:11px;border:1px solid var(--line);border-radius:10px}.empty{padding:35px;text-align:center;color:var(--muted)}.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0f2f5;font-size:11px}.badge.ok{background:#e5f6ee;color:var(--ok)}.badge.warn{background:#fff4df;color:#9a6a12}.badge.danger{background:#fdeaea;color:var(--danger)}
+.modal{position:fixed;inset:0;background:#0006;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}.modal.show{display:flex}.modalbox{background:#fff;border-radius:18px;width:min(620px,96vw);max-height:90vh;overflow:auto;padding:24px}.modalhead{display:flex;justify-content:space-between;align-items:center}.x{border:0;background:#eef1f5;border-radius:8px;width:32px;height:32px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}.toast{position:fixed;right:20px;bottom:20px;background:#18212f;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:50}
+@media(max-width:900px){.sidebar{width:205px}.main{margin-left:205px;padding:18px}.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media(max-width:650px){.sidebar{position:static;width:100%;height:auto}.main{margin-left:0}.app{display:block}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.nav .section{display:none}.cards{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.top{align-items:flex-start;gap:10px}}
 </style>
 </head>
 <body>
-<div id="login" class="login card">
-<h1>Reyyan İnşaat Takip</h1><p class="muted">Ortak kullanım sistemi</p>
-<div id="loginMsg"></div>
-<label>E-posta</label><input id="email" type="email" autocomplete="username">
-<label style="margin-top:10px">Şifre</label><input id="password" type="password" autocomplete="current-password">
-<button id="loginBtn" style="margin-top:14px">Giriş Yap</button>
+<div id="login" class="login">
+  <div class="loginbox">
+    <div class="logo">REYYAN <span class="gold">İNŞAAT</span></div>
+    <p class="muted">Ortak müşteri ve proje takip sistemi</p>
+    <div class="field"><label>E-posta</label><input id="email" type="email" placeholder="E-posta adresiniz"></div>
+    <div class="field"><label>Şifre</label><input id="password" type="password" placeholder="Şifreniz"></div>
+    <button class="primary" style="width:100%" onclick="login()">Giriş Yap</button>
+    <p id="loginMsg" class="muted"></p>
+  </div>
 </div>
 
-<div id="app" class="hidden">
-<header><h1>Reyyan İnşaat Takip</h1><button id="logout" style="width:auto">Çıkış</button></header>
-<div class="wrap">
-<div class="stats">
-<div class="stat">Müşteriler<b id="countCustomers">0</b></div>
-<div class="stat">Projeler<b id="countProjects">0</b></div>
-<div class="stat">Satışlar<b id="countSales">0</b></div>
+<div id="app" class="app">
+<aside class="sidebar">
+  <div class="brand">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img id="appLogo" style="display:none;width:42px;height:42px;object-fit:contain;border-radius:8px;background:#fff;padding:3px">
+    <div><strong id="brandName">REYYAN İNŞAAT</strong><small>Takip & Yönetim</small></div>
+  </div>
+  <button onclick="openLogoModal()" style="margin-top:12px;width:100%;padding:8px;border:1px solid #ffffff22;border-radius:8px;background:#ffffff0d;color:#dbe3ed">⚙ Logoyu Düzenle</button>
 </div>
-<div class="tabs">
-<button data-tab="customers">Müşteriler</button><button data-tab="projects">Projeler</button>
-<button data-tab="sales">Satışlar</button><button data-tab="payments">Ödemeler</button>
-<button data-tab="communications">Görüşmeler</button><button data-tab="requests">Talepler / Şikâyetler</button>
-<button data-tab="after_sales">Teslimat / Satış Sonrası</button>
+  <div class="nav">
+    <button class="active" onclick="showPage('dashboard',this)">⌂ Genel Bakış</button>
+    <div class="section">Müşteri Yönetimi</div>
+    <button onclick="showPage('customers',this)">♙ Müşteriler</button>
+    <button onclick="showPage('communications',this)">☏ Görüşmeler</button>
+    <button onclick="showPage('requests',this)">⚑ Talepler / Şikâyetler</button>
+    <div class="section">Satış & Finans</div>
+    <button onclick="showPage('sales',this)">▣ Satışlar</button>
+    <button onclick="showPage('payments',this)">₺ Ödemeler</button>
+    <div class="section">Projeler</div>
+    <button onclick="showPage('projects',this)">⌂ Projeler</button>
+    <button onclick="showPage('after',this)">✓ Teslimat / Satış Sonrası</button>
+  </div>
+</aside>
+<main class="main">
+ <div class="top"><h1 id="title">Genel Bakış</h1><div class="userpill"><span id="who">Kullanıcı</span><button class="logout" onclick="logout()">Çıkış</button></div></div>
+
+ <section id="dashboard" class="page active">
+  <div class="cards">
+   <div class="card"><div class="muted">Toplam Müşteri</div><div class="stat" id="statCustomers">0</div><div class="muted">Kayıtlı müşteri</div></div>
+   <div class="card"><div class="muted">Aktif Proje</div><div class="stat" id="statProjects">0</div><div class="muted">Proje takibi</div></div>
+   <div class="card"><div class="muted">Satış</div><div class="stat" id="statSales">0</div><div class="muted">Toplam satış kaydı</div></div>
+   <div class="card"><div class="muted">Açık Talepler</div><div class="stat" id="statRequests">0</div><div class="muted">Takip edilmesi gereken</div></div>
+  </div>
+  <div class="grid2">
+   <div class="panel"><h3>Son Müşteriler</h3><div id="dashCustomers" class="tablewrap"></div></div>
+   <div class="panel"><h3>Hızlı İşlemler</h3>
+    <button class="primary" style="width:100%;margin-bottom:10px" onclick="openModal('customer')">+ Yeni Müşteri</button>
+    <button class="primary" style="width:100%;margin-bottom:10px" onclick="openModal('project')">+ Yeni Proje</button>
+    <button class="primary" style="width:100%;margin-bottom:10px" onclick="openModal('sale')">+ Yeni Satış</button>
+    <button class="primary" style="width:100%" onclick="openModal('request')">+ Talep / Şikâyet</button>
+   </div>
+  </div>
+ </section>
+
+ <section id="customers" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('customer')">+ Yeni Müşteri</button><input class="search" id="searchCustomers" oninput="renderCustomers()" placeholder="Müşteri ara..."></div><div id="customersTable"></div></div></section>
+ <section id="projects" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('project')">+ Yeni Proje</button></div><div id="projectsTable"></div></div></section>
+ <section id="sales" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('sale')">+ Yeni Satış</button></div><div id="salesTable"></div></div></section>
+ <section id="payments" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('payment')">+ Yeni Ödeme</button></div><div id="paymentsTable"></div></div></section>
+ <section id="communications" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('communication')">+ Yeni Görüşme</button></div><div id="communicationsTable"></div></div></section>
+ <section id="requests" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('request')">+ Yeni Talep / Şikâyet</button></div><div id="requestsTable"></div></div></section>
+ <section id="after" class="page"><div class="panel"><div class="toolbar"><button class="primary" onclick="openModal('after')">+ Satış Sonrası Kaydı</button></div><div id="afterTable"></div></div></section>
+</main>
 </div>
-<div id="panel" class="card"></div>
+
+<div id="modal" class="modal"><div class="modalbox"><div class="modalhead"><h2 id="modalTitle">Yeni Kayıt</h2><button class="x" onclick="closeModal()">×</button></div><form id="form" onsubmit="saveForm(event)"><div id="formBody"></div><button class="primary" type="submit">Kaydet</button></form></div></div>
+<div id="logoModal" class="modal"><div class="modalbox">
+ <div class="modalhead"><h2>Logo Düzenle</h2><button class="x" onclick="closeLogoModal()">×</button></div>
+ <p class="muted">PNG veya JPG logo seç. Logo bu tarayıcıda saklanır.</p>
+ <div style="display:flex;gap:18px;align-items:center;margin:18px 0">
+   <div style="width:90px;height:90px;border:1px dashed #cbd5e1;border-radius:12px;display:grid;place-items:center;background:#f8fafc">
+     <img id="logoPreview" style="max-width:80px;max-height:80px;object-fit:contain;display:none">
+     <span id="logoEmpty" class="muted">Logo</span>
+   </div>
+   <div><input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp" onchange="previewLogo(event)"></div>
+ </div>
+ <button class="primary" onclick="saveLogo()">Logoyu Kaydet</button>
+ <button class="logout" style="margin-left:8px" onclick="removeLogo()">Logoyu Kaldır</button>
 </div></div>
+<div id="toast" class="toast"></div>
 
 <script>
-const C=window.REYYAN_CONFIG;
-let client=null,currentTab="customers";
-const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-function loginMsg(t){$("loginMsg").innerHTML='<div class="msg">'+esc(t)+'</div>'}
+let sb=null, currentUser=null, cache={customers:[],projects:[],sales:[],payments:[],communications:[],requests:[],after:[]};
+const labels={dashboard:'Genel Bakış',customers:'Müşteriler',projects:'Projeler',sales:'Satışlar',payments:'Ödemeler',communications:'Görüşmeler',requests:'Talepler / Şikâyetler',after:'Teslimat / Satış Sonrası'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function init(){
+ applyLogo();
+ try{
+  if(!window.REYYAN_CONFIG || !window.REYYAN_CONFIG.supabaseUrl || window.REYYAN_CONFIG.supabaseKey==='BURAYA_PUBLISHABLE_KEY') throw new Error('config.js içindeki publishable key doldurulmamış.');
+  sb=window.supabase.createClient(window.REYYAN_CONFIG.supabaseUrl,window.REYYAN_CONFIG.supabaseKey);
+  sb.auth.getSession().then(({data})=>{if(data.session) enter(data.session.user)});
+ }catch(e){document.getElementById('loginMsg').textContent=e.message}
+}
+async function login(){
+ const msg=document.getElementById('loginMsg');msg.textContent='Giriş yapılıyor...';
+ const {data,error}=await sb.auth.signInWithPassword({email:email.value,password:password.value});
+ if(error){msg.textContent=error.message;return} enter(data.user);
+}
+function enter(u){currentUser=u;document.getElementById('login').style.display='none';document.getElementById('app').style.display='block';document.getElementById('who').textContent=u.email;loadAll()}
+async function logout(){await sb.auth.signOut();location.reload()}
+function showPage(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.getElementById('title').textContent=labels[id]}
+async function getTable(table, order='created_at'){
+ const q=sb.from(table).select('*'); const {data,error}=order?q.order(order,{ascending:false}):await q;
+ if(error){console.error(table,error);return []} return data||[];
+}
+async function loadAll(){
+ cache.customers=await getTable('customers');cache.projects=await getTable('projects');cache.sales=await getTable('sales');cache.payments=await getTable('payments');cache.communications=await getTable('communications');cache.requests=await getTable('customer_requests');cache.after=await getTable('after_sales');
+ renderAll();
+}
+function renderAll(){
+ statCustomers.textContent=cache.customers.length;statProjects.textContent=cache.projects.length;statSales.textContent=cache.sales.length;statRequests.textContent=cache.requests.filter(x=>!['çözüldü','tamamlandı','kapalı'].includes((x.status||'').toLowerCase())).length;
+ renderCustomers();renderProjects();renderSales();renderPayments();renderCommunications();renderRequests();renderAfter();
+ dashCustomers.innerHTML=table(['Ad Soyad','Telefon','Not'],cache.customers.slice(0,6).map(x=>[x.full_name,x.phone||'-',x.notes||'-']));
+}
+function table(headers,rows){if(!rows.length)return '<div class="empty">Henüz kayıt bulunmuyor.</div>';return '<table class="table"><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>'}
+function renderCustomers(){let q=(searchCustomers?.value||'').toLowerCase();let a=cache.customers.filter(x=>(x.full_name+' '+(x.phone||'')+' '+(x.email||'')).toLowerCase().includes(q));customersTable.innerHTML=table(['Ad Soyad','Telefon','E-posta','Not'],a.map(x=>[esc(x.full_name),esc(x.phone||'-'),esc(x.email||'-'),esc(x.notes||'-')]))}
+function renderProjects(){projectsTable.innerHTML=table(['Proje','Konum','Durum','Not'],cache.projects.map(x=>[esc(x.project_name),esc(x.location||'-'),'<span class="badge">'+esc(x.status||'Belirtilmedi')+'</span>',esc(x.notes||'-')]))}
+function cname(id){return cache.customers.find(x=>x.id===id)?.full_name||id||'-'}function pname(id){return cache.projects.find(x=>x.id===id)?.project_name||id||'-'}
+function renderSales(){salesTable.innerHTML=table(['Müşteri','Proje','Bağımsız Bölüm','Satış Fiyatı','Tarih','Durum'],cache.sales.map(x=>[esc(cname(x.customer_id)),esc(pname(x.project_id)),esc(x.property_name),Number(x.sale_price||0).toLocaleString('tr-TR')+' ₺',esc(x.sale_date),'<span class="badge ok">'+esc(x.payment_status||'-')+'</span>']))}
+function renderPayments(){paymentsTable.innerHTML=table(['Müşteri','Tutar','Vade','Ödeme Tarihi','Durum','Yöntem'],cache.payments.map(x=>[esc(cname(x.customer_id)),Number(x.amount||0).toLocaleString('tr-TR')+' ₺',esc(x.due_date),esc(x.paid_date||'-'),'<span class="badge '+((x.status||'').toLowerCase().includes('öd')?'ok':'warn')+'">'+esc(x.status),esc(x.payment_method||'-')]))}
+function renderCommunications(){communicationsTable.innerHTML=table(['Müşteri','Tür','Tarih','Konu','Not'],cache.communications.map(x=>[esc(cname(x.customer_id)),esc(x.communication_type),new Date(x.communication_date).toLocaleString('tr-TR'),esc(x.subject||'-'),esc(x.notes||'-')]))}
+function renderRequests(){requestsTable.innerHTML=table(['Müşteri','Tür','Başlık','Durum','Öncelik','Tarih'],cache.requests.map(x=>[esc(cname(x.customer_id)),esc(x.request_type),esc(x.title),'<span class="badge">'+esc(x.status)+'</span>',esc(x.priority||'-'),new Date(x.created_at).toLocaleDateString('tr-TR')]))}
+function renderAfter(){afterTable.innerHTML=table(['Müşteri','Teslimat','Durum','Memnuniyet','Takip Tarihi','Not'],cache.after.map(x=>[esc(cname(x.customer_id)),esc(x.delivery_date||'-'),'<span class="badge">'+esc(x.delivery_status)+'</span>',esc(x.customer_satisfaction||'-'),esc(x.follow_up_date||'-'),esc(x.notes||'-')]))}
+function opts(arr,label){return '<option value="">Seçiniz</option>'+arr.map(x=>`<option value="${x.id}">${esc(x[label])}</option>`).join('')}
+let modalType='';
+function openModal(type){modalType=type;modal.classList.add('show');const names={customer:'Yeni Müşteri',project:'Yeni Proje',sale:'Yeni Satış',payment:'Yeni Ödeme',communication:'Yeni Görüşme',request:'Yeni Talep / Şikâyet',after:'Yeni Teslimat / Satış Sonrası'};modalTitle.textContent=names[type];let b='';
+ const customer='<div class="field"><label>Müşteri</label><select name="customer_id" required>'+opts(cache.customers,'full_name')+'</select></div>';
+ if(type==='customer')b='<div class="formgrid"><div class="field"><label>Ad Soyad</label><input name="full_name" required></div><div class="field"><label>Telefon</label><input name="phone"></div><div class="field"><label>E-posta</label><input name="email"></div><div class="field full"><label>Müşteriye Özel Not</label><textarea name="notes"></textarea></div></div>';
+ if(type==='project')b='<div class="formgrid"><div class="field"><label>Proje Adı</label><input name="project_name" required></div><div class="field"><label>Konum</label><input name="location"></div><div class="field"><label>Durum</label><select name="status"><option>Aktif</option><option>Planlama</option><option>Tamamlandı</option><option>Pasif</option></select></div><div class="field full"><label>Proje Notu</label><textarea name="notes"></textarea></div></div>';
+ if(type==='sale')b='<div class="formgrid">'+customer+'<div class="field"><label>Proje</label><select name="project_id" required>'+opts(cache.projects,'project_name')+'</select></div><div class="field"><label>Bağımsız Bölüm</label><input name="property_name" required></div><div class="field"><label>Satış Fiyatı</label><input name="sale_price" type="number" required></div><div class="field"><label>Satış Tarihi</label><input name="sale_date" type="date" required></div><div class="field"><label>Ödeme Durumu</label><select name="payment_status"><option>Bekliyor</option><option>Devam Ediyor</option><option>Tamamlandı</option></select></div><div class="field full"><label>Not</label><textarea name="notes"></textarea></div></div>';
+ if(type==='payment')b='<div class="formgrid">'+customer+'<div class="field"><label>Satış</label><select name="sale_id" required>'+opts(cache.sales,'property_name')+'</select></div><div class="field"><label>Tutar</label><input name="amount" type="number" required></div><div class="field"><label>Vade Tarihi</label><input name="due_date" type="date" required></div><div class="field"><label>Ödeme Tarihi</label><input name="paid_date" type="date"></div><div class="field"><label>Durum</label><select name="status"><option>Bekliyor</option><option>Ödendi</option><option>Gecikti</option></select></div><div class="field"><label>Yöntem</label><input name="payment_method"></div></div>';
+ if(type==='communication')b='<div class="formgrid">'+customer+'<div class="field"><label>Görüşme Türü</label><select name="communication_type"><option>Telefon</option><option>WhatsApp</option><option>Yüz Yüze</option><option>E-posta</option></select></div><div class="field"><label>Konu</label><input name="subject"></div><div class="field full"><label>Görüşme Notu</label><textarea name="notes"></textarea></div></div>';
+ if(type==='request')b='<div class="formgrid">'+customer+'<div class="field"><label>Tür</label><select name="request_type"><option>Talep</option><option>Şikâyet</option><option>Bilgi</option></select></div><div class="field"><label>Başlık</label><input name="title" required></div><div class="field"><label>Durum</label><select name="status"><option>Açık</option><option>İşlemde</option><option>Çözüldü</option></select></div><div class="field"><label>Öncelik</label><select name="priority"><option>Normal</option><option>Yüksek</option><option>Acil</option></select></div><div class="field full"><label>Açıklama</label><textarea name="description"></textarea></div></div>';
+ if(type==='after')b='<div class="formgrid">'+customer+'<div class="field"><label>Satış</label><select name="sale_id" required>'+opts(cache.sales,'property_name')+'</select></div><div class="field"><label>Teslimat Tarihi</label><input name="delivery_date" type="date"></div><div class="field"><label>Teslimat Durumu</label><select name="delivery_status"><option>Bekliyor</option><option>Planlandı</option><option>Teslim Edildi</option></select></div><div class="field"><label>Müşteri Memnuniyeti</label><select name="customer_satisfaction"><option>Belirtilmedi</option><option>Çok Memnun</option><option>Memnun</option><option>Kararsız</option><option>Memnun Değil</option></select></div><div class="field"><label>Takip Tarihi</label><input name="follow_up_date" type="date"></div><div class="field full"><label>Not</label><textarea name="notes"></textarea></div></div>';
+ formBody.innerHTML=b}
+function closeModal(){modal.classList.remove('show');form.reset()}
+async function saveForm(e){e.preventDefault();const fd=new FormData(form);let o=Object.fromEntries(fd.entries());let tableName={customer:'customers',project:'projects',sale:'sales',payment:'payments',communication:'communications',request:'customer_requests',after:'after_sales'}[modalType];if(modalType==='payment'&&o.paid_date==='')o.paid_date=null;if(modalType==='after'&&o.delivery_date==='')o.delivery_date=null;const {error}=await sb.from(tableName).insert(o);if(error){toast(error.message);return}closeModal();toast('Kayıt başarıyla eklendi.');await loadAll()}
+function toast(t){toastEl=document.getElementById('toast');toastEl.textContent=t;toastEl.style.display='block';setTimeout(()=>toastEl.style.display='none',2600)}
 
-const defs={
-customers:{title:"Müşteriler",table:"customers",fields:[["full_name","Ad Soyad","text",1],["phone","Telefon","text"],["email","E-posta","email"],["notes","Notlar","textarea"]],cols:["full_name","phone","email","notes"]},
-projects:{title:"Projeler",table:"projects",fields:[["project_name","Proje Adı","text",1],["location","Lokasyon","text"],["status","Durum","text"],["notes","Notlar","textarea"]],cols:["project_name","location","status","notes"]},
-sales:{title:"Satışlar",table:"sales",fields:[["customer_id","Müşteri ID","text",1],["project_id","Proje ID","text",1],["property_name","Bağımsız Bölüm / Gayrimenkul","text",1],["sale_price","Satış Fiyatı","number",1],["sale_date","Satış Tarihi","date",1],["payment_status","Ödeme Durumu","text"],["notes","Notlar","textarea"]],cols:["property_name","sale_price","sale_date","payment_status","notes"]},
-payments:{title:"Ödemeler",table:"payments",fields:[["sale_id","Satış ID","text",1],["customer_id","Müşteri ID","text",1],["amount","Tutar","number",1],["due_date","Vade Tarihi","date",1],["paid_date","Ödeme Tarihi","date"],["status","Durum","text",1],["payment_method","Ödeme Yöntemi","text"],["notes","Notlar","textarea"]],cols:["amount","due_date","paid_date","status","payment_method","notes"]},
-communications:{title:"Görüşmeler",table:"communications",fields:[["customer_id","Müşteri ID","text",1],["communication_type","Görüşme Türü","text",1],["communication_date","Tarih","datetime-local"],["subject","Konu","text"],["notes","Notlar","textarea"]],cols:["communication_type","communication_date","subject","notes"]},
-requests:{title:"Talepler / Şikâyetler",table:"customer_requests",fields:[["customer_id","Müşteri ID","text",1],["request_type","Tür","text",1],["title","Başlık","text",1],["description","Açıklama","textarea"],["status","Durum","text",1],["priority","Öncelik","text"]],cols:["request_type","title","status","priority","description"]},
-after_sales:{title:"Teslimat / Satış Sonrası",table:"after_sales",fields:[["customer_id","Müşteri ID","text",1],["sale_id","Satış ID","text",1],["delivery_date","Teslim Tarihi","date"],["delivery_status","Teslimat Durumu","text",1],["customer_satisfaction","Müşteri Memnuniyeti","text"],["follow_up_date","Takip Tarihi","date"],["notes","Notlar","textarea"]],cols:["delivery_status","customer_satisfaction","follow_up_date","notes"]}
-};
-
-async function boot(){
-if(!C||!C.supabaseUrl||!C.supabaseKey||C.supabaseKey==="BURAYA_PUBLISHABLE_KEY"){loginMsg("config.js içinde Publishable key eksik.");return}
-client=supabase.createClient(C.supabaseUrl,C.supabaseKey);
-const {data}=await client.auth.getSession(); if(data.session) showApp();
-client.auth.onAuthStateChange((_e,s)=>s?showApp():showLogin());
-}
-function showLogin(){$("app").classList.add("hidden");$("login").classList.remove("hidden")}
-async function showApp(){$("login").classList.add("hidden");$("app").classList.remove("hidden");await loadTab(currentTab);updateStats()}
-$("loginBtn").onclick=async()=>{
-loginMsg("Giriş yapılıyor...");
-const {error}=await client.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
-if(error)loginMsg(error.message);
-};
-$("logout").onclick=()=>client.auth.signOut();
-document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>loadTab(b.dataset.tab));
-
-async function loadTab(tab){
-currentTab=tab;document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
-const d=defs[tab];let h="<h2>"+d.title+"</h2><form id='form'><div class='grid'>";
-for(const [n,l,t,r] of d.fields)h+="<div><label>"+l+"</label>"+(t==="textarea"?`<textarea id="f_${n}" ${r?"required":""}></textarea>`:`<input id="f_${n}" type="${t}" ${r?"required":""}>`)+"</div>";
-h+="</div><button style='margin-top:14px'>Kaydet</button></form><div id='tableWrap'><p class='muted'>Yükleniyor...</p></div>";
-$("panel").innerHTML=h;$("form").onsubmit=async e=>{e.preventDefault();await insertRow(d)};await renderRows(d);
-}
-async function insertRow(d){
-let o={};for(const [n] of d.fields){const v=$("f_"+n).value;if(v!=="")o[n]=v}
-if(o.sale_price)o.sale_price=Number(o.sale_price);if(o.amount)o.amount=Number(o.amount);
-const {error}=await client.from(d.table).insert(o);if(error){alert("Kayıt eklenemedi: "+error.message);return}
-$("form").reset();await renderRows(d);updateStats();
-}
-async function renderRows(d){
-let q=client.from(d.table).select("*");if(d.table!=="communications")q=q.order("created_at",{ascending:false});else q=q.order("communication_date",{ascending:false});
-const {data,error}=await q.limit(100);
-if(error){$("tableWrap").innerHTML="<div class='msg'>Tablo okunamadı: "+esc(error.message)+"</div>";return}
-if(!data?.length){$("tableWrap").innerHTML="<p class='muted'>Henüz kayıt yok.</p>";return}
-let h="<table><thead><tr>"+d.cols.map(c=>"<th>"+esc(c)+"</th>").join("")+"</tr></thead><tbody>";
-for(const r of data)h+="<tr>"+d.cols.map(c=>"<td>"+esc(r[c])+"</td>").join("")+"</tr>";h+="</tbody></table>";$("tableWrap").innerHTML=h;
-}
-async function updateStats(){
-for(const [id,t] of [["countCustomers","customers"],["countProjects","projects"],["countSales","sales"]]){const {count}=await client.from(t).select("*",{count:"exact",head:true});$(id).textContent=count??0}
-}
-boot();
+function openLogoModal(){document.getElementById('logoModal').classList.add('show');const x=localStorage.getItem('reyyan_logo');if(x){logoPreview.src=x;logoPreview.style.display='block';logoEmpty.style.display='none'}}
+function closeLogoModal(){document.getElementById('logoModal').classList.remove('show')}
+function previewLogo(e){const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast('Logo 2 MB altında olmalı.');e.target.value='';return}const r=new FileReader();r.onload=()=>{logoPreview.src=r.result;logoPreview.style.display='block';logoEmpty.style.display='none'};r.readAsDataURL(f)}
+function applyLogo(){const x=localStorage.getItem('reyyan_logo');const img=document.getElementById('appLogo');if(x){img.src=x;img.style.display='block'}else img.style.display='none'}
+function saveLogo(){const src=document.getElementById('logoPreview').src;if(!src||src==='')return toast('Önce logo seç.');localStorage.setItem('reyyan_logo',src);applyLogo();closeLogoModal();toast('Logo kaydedildi.')}
+function removeLogo(){localStorage.removeItem('reyyan_logo');applyLogo();closeLogoModal();toast('Logo kaldırıldı.')}
+window.addEventListener('load',init);
 </script>
 </body>
 </html>
