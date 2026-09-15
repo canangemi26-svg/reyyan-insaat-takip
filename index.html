@@ -3,287 +3,106 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Reyyan İnşaat Yönetim V6</title>
-<style>
-:root{--bg:#f4f6f8;--card:#fff;--text:#17212b;--muted:#6b7785;--line:#e4e8ed;--accent:#1f6f5b;--accent2:#eaf5f1;--danger:#b42318;--warn:#a15c00;--shadow:0 8px 24px rgba(20,30,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}.side{width:250px;background:#14221f;color:#fff;padding:18px;position:fixed;inset:0 auto 0 0;overflow:auto}.brand{font-size:20px;font-weight:800;margin:4px 0 20px}.brand small{display:block;font-size:11px;color:#a9c4bb;font-weight:500;margin-top:3px}.nav button{width:100%;text-align:left;background:transparent;color:#d9e5e1;padding:11px 12px;border-radius:9px;margin:2px 0}.nav button:hover,.nav button.active{background:#24483f;color:#fff}.main{margin-left:250px;width:calc(100% - 250px);padding:22px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.top h1{margin:0;font-size:25px}.user{background:#fff;border:1px solid var(--line);padding:9px 12px;border-radius:10px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px}.metric .label{color:var(--muted);font-size:12px}.metric .num{font-size:27px;font-weight:800;margin-top:5px}.metric .sub{font-size:12px;color:var(--muted);margin-top:3px}.section{margin-top:16px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.sectionhead h2{font-size:17px;margin:0}.btn{background:var(--accent);color:#fff;border-radius:8px;padding:9px 12px}.btn.light{background:#eef3f1;color:#21483f}.btn.red{background:#fff0ef;color:var(--danger)}.btn.gray{background:#eef0f2;color:#34414d}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.toolbar input,.toolbar select{min-width:160px}.input,textarea,select{width:100%;border:1px solid #d7dde3;border-radius:8px;padding:9px;background:#fff}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:760px}.table th,.table td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{font-size:12px;color:var(--muted);font-weight:700;background:#fafbfc}.badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:11px;font-weight:700;background:#eef2f4}.green{background:#e8f5ef;color:#1f6f5b}.yellow{background:#fff5df;color:#8b5700}.redbg{background:#fff0ef;color:#a1261c}.blue{background:#eaf1ff;color:#315ea8}.muted{color:var(--muted)}.progress{height:8px;background:#edf0f2;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent)}.alert{padding:11px 12px;border-radius:9px;margin:7px 0;background:#fff7e6;border:1px solid #f4dfae}.danger{background:#fff0ef;border-color:#f3c8c4}.ok{background:#edf8f2;border-color:#c9e8d8}.modal{position:fixed;inset:0;background:rgba(0,0,0,.38);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.open{display:flex}.modalbox{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:15px;padding:18px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.formgrid .full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.empty{padding:25px;text-align:center;color:var(--muted)}.login{position:fixed;inset:0;background:#14221f;display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}.loginbox{width:min(430px,100%);background:#fff;border-radius:18px;padding:26px}.loginbox h1{margin-top:0}.loginbox p{color:var(--muted)}.loginbox .btn{width:100%;margin-top:10px}.note{font-size:12px;color:var(--muted)}@media(max-width:950px){.side{width:210px}.main{margin-left:210px;width:calc(100% - 210px)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.side{position:static;width:100%;height:auto}.app{display:block}.main{margin-left:0;width:100%;padding:14px}.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}.grid,.grid2,.formgrid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.table{min-width:680px}}
-</style>
-
-<style id="reyyan-logo-style">
-.reyyan-logo{display:block;object-fit:contain;background:transparent}
-.login-logo{width:220px;max-width:75vw;height:95px;margin:0 auto 14px;border-radius:8px}
-.brand-logo{width:145px;height:58px;border-radius:6px}
-.sidebar .brand, .brand{display:flex;align-items:center;gap:10px}
-@media(max-width:700px){
-  .brand-logo{width:118px;height:48px}
-  .login-logo{width:190px;height:82px}
-}
-</style>
-
-</head>
-<body>
-<img class="reyyan-logo brand-logo" src="assets/reyyan-insaat-logo.jpeg" alt="Reyyan İnşaat">
-
-<img class="reyyan-logo login-logo" src="assets/reyyan-insaat-logo.jpeg" alt="Reyyan İnşaat">
-
-<div id="login" class="login">
- <div class="loginbox">
-  <img class="reyyan-logo login-logo" src="assets/reyyan-insaat-logo.jpeg" alt="Reyyan İnşaat">
-  <h1>Reyyan İnşaat</h1><p>Ortak Yönetim Sistemi</p>
-  <label>E-posta</label><input id="loginEmail" class="input" type="email" placeholder="kullanici@reyyaninsaat.com" style="margin:6px 0 10px">
-  <label>Şifre</label><input id="loginPassword" class="input" type="password" placeholder="••••••••" style="margin:6px 0 10px">
-  <button class="btn" onclick="enter()">Sisteme Gir</button>
-  <div id="loginMsg" class="note" style="margin-top:12px"></div>
-  <div class="note" style="margin-top:8px">Bu sürüm merkezi veritabanına bağlandığında yaptığınız değişiklikler diğer kullanıcıların ekranına da otomatik gelir.</div>
- </div>
-</div>
-
-<div class="app">
-<aside class="side">
- <div class="brand">REYYAN İNŞAAT<small>YÖNETİM SİSTEMİ V6</small></div>
- <div class="nav" id="nav"></div>
- <div style="margin-top:16px;font-size:11px;color:#9fb4ad">Ortak kullanım için V6'nın merkezi sunucu sürümüne geçilmelidir.</div>
-</aside>
-<main class="main">
- <div class="top"><h1 id="title">Yönetim Paneli</h1><div class="user" id="who"></div></div>
- <div id="content"></div>
-</main>
-</div>
-
-<div class="modal" id="modal"><div class="modalbox"><div class="sectionhead"><h2 id="modalTitle"></h2><button class="btn gray" onclick="closeModal()">Kapat</button></div><div id="modalBody"></div></div></div>
-
+<title>Reyyan İnşaat Takip</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
-<script>
-const KEY="reyyan_v7_full_db";
-const seed={
- users:[
-  {id:1,name:"Raed Alhesrıya",role:"Şirket Müdürü"},
-  {id:2,name:"Canan Akbaş",role:"Satış"},
-  {id:3,name:"Ahmet",role:"Satış"}
- ],
- projects:[
-  {id:1,name:"Reyyan Vera Bahçecik",status:"Devam Ediyor",progress:35,budget:0},
-  {id:2,name:"Orman Sitesi",status:"Devam Ediyor",progress:55,budget:0},
-  {id:3,name:"Zümrüt Koru",status:"Devam Ediyor",progress:20,budget:0}
- ],
- customers:[
-  {id:1,name:"TURHAN ALMANYA",phone:"0533 811 19 32",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Karar Aşamasında",budget:0,unitType:"2. villa",owner:"CANAN AKBAŞ",last:"2026-08-23",next:"2026-08-23",status:"Sıcak",note:"23.08.2026 : fiyatta yardımcı olmamızı istediler teklif gönderilecek fakat telefonları açmadılar.",notes:[{date:"2026-08-23",by:"CANAN AKBAŞ",text:"23.08.2026 : fiyatta yardımcı olmamızı istediler teklif gönderilecek fakat telefonları açmadılar."}]},
-  {id:2,name:"MUSTAFA V.",phone:"0533 687 27 01",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",budget:0,unitType:"proje bilgileri / fiyat listesi",owner:"CANAN AKBAŞ",last:"2026-08-30",next:"2026-08-30",status:"Ilık",note:"proje bilgilerini istedi . İletildi. Müsait bi zamanda gelecek",notes:[{date:"2026-08-30",by:"CANAN AKBAŞ",text:"proje bilgilerini istedi . İletildi. Müsait bi zamanda gelecek"}]},
-  {id:3,name:"GÖZDE 1.",phone:"501 069 81 39",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",budget:0,unitType:"1. villa",owner:"CANAN AKBAŞ",last:"2026-08-30",next:"2026-08-30",status:"Ilık",note:"1. villa için nakit olduğunu ve ödeme seçeneklerini konuştuk . Villa tesliminde tüm para nakit olarak ödenecek",notes:[{date:"2026-08-30",by:"CANAN AKBAŞ",text:"1. villa için nakit olduğunu ve ödeme seçeneklerini konuştuk . Villa tesliminde tüm para nakit olarak ödenecek"}]},
-  {id:4,name:"AYŞENUR",phone:"0536 517 74 12",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",budget:0,unitType:"13/16 VİLLA",owner:"CANAN AKBAŞ",last:"2026-08-27",next:"2026-08-27",status:"Ilık",note:"13/16 Villalara bakıldı . Henüz ellerinde nakit yok. İstanbuldan gelecekler . Şürü beyin arkadaşı",notes:[{date:"2026-08-27",by:"CANAN AKBAŞ",text:"13/16 Villalara bakıldı . Henüz ellerinde nakit yok. İstanbuldan gelecekler . Şürü beyin arkadaşı"}]},
-  {id:5,name:"ALİ YAŞAR Fabrika başiskele",phone:"05327612948",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",budget:0,unitType:"13/16 VİLLA",owner:"CANAN AKBAŞ",last:"2026-08-31",next:"2026-08-31",status:"Sıcak",note:"nakit alım olacak . İpotek yaptırmak için alacak. bu hafta içi gelecek yoğunluğu var. 20.000. TEKLİF EDİLDİ . ANLAŞMA İÇİN GELECEKLER",notes:[{date:"2026-08-31",by:"CANAN AKBAŞ",text:"nakit alım olacak . İpotek yaptırmak için alacak. bu hafta içi gelecek yoğunluğu var. 20.000. TEKLİF EDİLDİ . ANLAŞMA İÇİN GELECEKLER"}]},
-  {id:6,name:"HİLAL * SALİH",phone:"0554 272 96 96",source:"İlan",project:"Reyyan Vera Bahçecik",stage:"Karar Aşamasında",budget:0,unitType:"5+1 / 13. VİLLA",owner:"CANAN AKBAŞ",last:"2026-08-27",next:"2026-08-27",status:"Soğuk",note:"5+1 büyük bahçeli ve manzaralı istiyorlar. 13. villa beğenildi akşam bakacaklar . 07.09.2026 : başka yerle anlaşmak üzereler",notes:[{date:"2026-08-27",by:"CANAN AKBAŞ",text:"5+1 büyük bahçeli ve manzaralı istiyorlar. 13. villa beğenildi akşam bakacaklar . 07.09.2026 : başka yerle anlaşmak üzereler"}]},
-  {id:7,name:"orman müşteri?",phone:"0532 394 16 76",source:"İlan",project:"Orman Sitesi",stage:"Bilgi Verildi",budget:0,unitType:"ORMAN 3+1 DUBLEKSLER",owner:"CANAN AKBAŞ",last:"2026-09-06",next:"2026-09-06",status:"Ilık",note:"3+1 deniz manzaralı dubleks istiyorlar . Fiyat ve kat planları atıldı. Şehir dışındalar müsait bir zamanda gelecekler",notes:[{date:"2026-09-06",by:"CANAN AKBAŞ",text:"3+1 deniz manzaralı dubleks istiyorlar . Fiyat ve kat planları atıldı. Şehir dışındalar müsait bir zamanda gelecekler"}]},
-  {id:8,name:"AYHAN",phone:"0530 304 79 97",source:"İlan",project:"Orman Sitesi",stage:"Teklif",budget:5500000,unitType:"ARAKAT 3+1",owner:"CANAN AKBAŞ",last:"2026-09-03",next:"2026-09-03",status:"Sıcak",note:"3+1 arakat istiyor. 5.500.000 bütçesi var fazlası çıkmıyor.",notes:[{date:"2026-09-03",by:"CANAN AKBAŞ",text:"3+1 arakat istiyor. 5.500.000 bütçesi var fazlası çıkmıyor."}]},
-  {id:9,name:"ZEYNEP",phone:"05451 954 43 41",source:"Instagram",project:"Zümrüt Koru",stage:"Bilgi Verildi",budget:0,unitType:"3+1 VE 4+1",owner:"",last:"2026-09-11",next:"2026-09-11",status:"Ilık",note:"Zümrüt ile ilgili bilgiler atıldı . Teslim süresi biraz uzun ormanı beğenmediler. Gelecekler",notes:[{date:"2026-09-11",by:"Canan Akbaş",text:"Zümrüt ile ilgili bilgiler atıldı . Teslim süresi biraz uzun ormanı beğenmediler. Gelecekler"}]}
- ],
- leads:[
-  {id:1,customer:"TURHAN ALMANYA",project:"Reyyan Vera Bahçecik",stage:"Karar Aşamasında",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-23",note:"23.08.2026 : fiyatta yardımcı olmamızı istediler teklif gönderilecek fakat telefonları açmadılar."},
-  {id:2,customer:"MUSTAFA V.",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-30",note:"proje bilgilerini istedi . İletildi. Müsait bi zamanda gelecek"},
-  {id:3,customer:"GÖZDE 1.",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-30",note:"1. villa için nakit olduğunu ve ödeme seçeneklerini konuştuk . Villa tesliminde tüm para nakit olarak ödenecek"},
-  {id:4,customer:"AYŞENUR",project:"Reyyan Vera Bahçecik",stage:"Bilgi Verildi",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-27",note:"13/16 Villalara bakıldı . Henüz ellerinde nakit yok. İstanbuldan gelecekler . Şürü beyin arkadaşı"},
-  {id:5,customer:"ALİ YAŞAR Fabrika başiskele",project:"Reyyan Vera Bahçecik",stage:"Pazarlık",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-31",note:"nakit alım olacak . İpotek yaptırmak için alacak. bu hafta içi gelecek yoğunluğu var. 20.000. TEKLİF EDİLDİ . ANLAŞMA İÇİN GELECEKLER"},
-  {id:6,customer:"HİLAL * SALİH",project:"Reyyan Vera Bahçecik",stage:"Karar Aşamasında",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-08-27",note:"5+1 büyük bahçeli ve manzaralı istiyorlar. 13. villa beğenildi akşam bakacaklar . 07.09.2026 : başka yerle anlaşmak üzereler"},
-  {id:7,customer:"orman müşteri?",project:"Orman Sitesi",stage:"Bilgi Verildi",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-09-06",note:"3+1 deniz manzaralı dubleks istiyorlar . Fiyat ve kat planları atıldı. Şehir dışındalar müsait bir zamanda gelecekler"},
-  {id:8,customer:"AYHAN",project:"Orman Sitesi",stage:"Teklif",source:"İlan",owner:"CANAN AKBAŞ",date:"2026-09-03",note:"3+1 arakat istiyor. 5.500.000 bütçesi var fazlası çıkmıyor."},
-  {id:9,customer:"ZEYNEP",project:"Zümrüt Koru",stage:"Bilgi Verildi",source:"Instagram",owner:"Canan Akbaş",date:"2026-09-11",note:"Zümrüt ile ilgili bilgiler atıldı . Teslim süresi biraz uzun ormanı beğenmediler. Gelecekler"}
- ],
- units:[
-  {id:1,project:"Orman Sitesi",unit:"A-101",type:"3+1",m2:145,floor:"1",price:5500000,status:"Satışta"},
-  {id:2,project:"Orman Sitesi",unit:"A-201",type:"3+1",m2:145,floor:"2",price:5750000,status:"Rezerve"},
-  {id:3,project:"Zümrüt Koru",unit:"B-101",type:"4+1",m2:180,floor:"1",price:7200000,status:"Satışta"}
- ],
- sales:[],payments:[],tasks:[],requests:[],complaints:[],visits:[],offers:[],reservations:[],
- construction:[
-  {id:1,project:"Reyyan Vera Bahçecik",stage:"Kaba İnşaat",item:"Saha ilerleme",owner:"Raed Alhesrıya",due:"2026-10-15",progress:35,status:"Devam"},
-  {id:2,project:"Orman Sitesi",stage:"İnce İşler",item:"İç imalatlar",owner:"Raed Alhesrıya",due:"2026-09-30",progress:55,status:"Devam"}
- ],
- suppliers:[],purchases:[],expenses:[],documents:[],communications:[],afterSales:[],audit:[]
-};
-let db=seed, currentUser=null, page="dashboard", supa=null, remoteMode=false, syncing=false;
-function localLoad(){try{return JSON.parse(localStorage.getItem(KEY))||seed}catch(e){return seed}}
-function localSave(){localStorage.setItem(KEY,JSON.stringify(db))}
-function cloudConfigured(){return !!(window.REYYAN_CONFIG&&REYYAN_CONFIG.supabaseUrl&&REYYAN_CONFIG.supabaseKey&&REYYAN_CONFIG.supabaseUrl.indexOf("your-project")<0)}
-async function initCloud(){
- if(!cloudConfigured()){db=localLoad();return false}
- supa=window.supabase.createClient(REYYAN_CONFIG.supabaseUrl,REYYAN_CONFIG.supabaseKey);
- const {data,error}=await supa.from("company_state").select("id,state").eq("id","reyyan").maybeSingle();
- if(error) throw error;
- if(data&&data.state){db=data.state;localSave()}
- else {db=seed; await supa.from("company_state").upsert({id:"reyyan",state:db,updated_by:null,updated_at:new Date().toISOString()});}
- remoteMode=true;
- return true;
-}
-async function save(){
- localSave();
- if(!remoteMode||!supa||syncing)return;
- syncing=true;
- try{await supa.from("company_state").upsert({id:"reyyan",state:db,updated_by:(await supa.auth.getUser()).data.user?.id||null,updated_at:new Date().toISOString()});}finally{syncing=false}
-}
-async function enter(){
- const msg=document.getElementById("loginMsg"); msg.textContent="Giriş yapılıyor…";
- if(!cloudConfigured()){msg.textContent="Bulut bağlantısı henüz yapılandırılmamış. Yerel demo açılıyor.";db=localLoad();currentUser=document.getElementById("loginEmail").value||"Canan Akbaş";document.getElementById("login").style.display="none";document.getElementById("who").innerHTML=currentUser;renderNav();go("dashboard");return}
- const email=document.getElementById("loginEmail").value.trim(), password=document.getElementById("loginPassword").value;
- const {data,error}=await supa.auth.signInWithPassword({email,password});
- if(error){msg.textContent="Giriş başarısız: "+error.message;return}
- const u=data.user;
- const person=db.users.find(x=>String(x.email||"").toLowerCase()===email.toLowerCase()) || db.users.find(x=>String(x.name||"").toLowerCase()===String(u.user_metadata?.name||"").toLowerCase());
- currentUser=person?.name||u.email;
- document.getElementById("login").style.display="none";
- document.getElementById("who").innerHTML=currentUser+" <span class='muted'>• "+(person?.role||"Kullanıcı")+"</span>";
- renderNav();go("dashboard");
- supa.channel("reyyan-company-state").on("postgres_changes",{event:"UPDATE",schema:"public",table:"company_state",filter:"id=eq.reyyan"},payload=>{if(payload.new?.state){db=payload.new.state;localSave(); if(!syncing) {renderNav(); go(page);}}}).subscribe();
-}
-function renderNav(){
- const items=[["dashboard","🏠 Yönetim Paneli"],["crm","👥 CRM / Müşteriler"],["funnel","🎯 Satış Hunisi"],["units","🏢 Daire / Villa Stoku"],["sales","💰 Satışlar"],["finance","📊 Finans / Tahsilat"],["tasks","⏰ Takip & Görevler"],["construction","🏗️ İnşaat Yönetimi"],["procurement","📦 Satın Alma / Tedarikçi"],["service","🤝 Müşteri Hizmetleri"],["documents","📁 Evraklar"],["reports","📈 Raporlar"],["staff","👤 Personel"],["settings","⚙️ Ayarlar / Yedekleme"]];
- document.getElementById("nav").innerHTML=items.map(x=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]}</button>`).join("")
-}
-function go(p){page=p;document.getElementById("title").textContent=({dashboard:"Yönetim Paneli",crm:"CRM / Müşteriler",funnel:"Satış Hunisi",units:"Daire / Villa Stoku",sales:"Satışlar",finance:"Finans / Tahsilat",tasks:"Takip & Görevler",construction:"İnşaat Yönetimi",procurement:"Satın Alma / Tedarikçi",service:"Müşteri Hizmetleri",documents:"Evraklar",reports:"Raporlar",staff:"Personel",settings:"Ayarlar / Yedekleme"})[p];renderNav();({dashboard,crm,funnel,units,sales,finance,tasks,construction,procurement,service,documents,reports,staff,settings}[p])();window.scrollTo(0,0)}
-function money(n){return new Intl.NumberFormat("tr-TR",{style:"currency",currency:"TRY",maximumFractionDigits:0}).format(Number(n)||0)}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function card(label,num,sub=""){return `<div class="card metric"><div class="label">${label}</div><div class="num">${num}</div><div class="sub">${sub}</div></div>`}
-function table(headers,rows){return `<div class="tablewrap"><table class="table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows||`<tr><td colspan="${headers.length}" class="empty">Kayıt yok</td></tr>`}</tbody></table></div>`}
-function btn(txt,fn,cl="btn"){return `<button class="${cl}" onclick="${fn}">${txt}</button>`}
-function dashboard(){
- const openFollow=db.customers.filter(c=>c.next&&new Date(c.next)<=new Date()).length;
- const receivable=db.payments.filter(p=>p.status!=="Ödendi").reduce((a,p)=>a+(Number(p.amount)||0),0);
- const salesTotal=db.sales.reduce((a,s)=>a+(Number(s.price)||0),0);
- const sold=db.units.filter(u=>u.status==="Satıldı").length;
- document.getElementById("content").innerHTML=`
- <div class="grid">${card("Aktif Müşteri",db.customers.length,"Tüm projeler")}${card("Satış",db.sales.length,money(salesTotal))}${card("Satışta Stok",db.units.filter(u=>u.status==="Satışta").length,"Daire / villa / ticari")}${card("Takip Bekleyen",openFollow,openFollow?"Öncelikli":"Bugün sakin")}</div>
- <div class="section grid2">
-  <div class="card"><div class="sectionhead"><h2>Bugün ne yapmalıyım?</h2>${btn("Yeni Görev","newTask()","btn light")}</div>
-   ${dueCustomers().map(c=>`<div class="alert ${c.next&&new Date(c.next)<new Date()?"danger":""}"><b>${esc(c.name)}</b> — ${esc(c.project)}<br><span class="muted">Takip: ${esc(c.next||"Tarih yok")} • ${esc(c.owner||"Atanmamış")}</span></div>`).join("")||"<div class='empty'>Bugün için acil müşteri takibi görünmüyor.</div>"}
-  </div>
-  <div class="card"><div class="sectionhead"><h2>Yönetici özeti</h2></div>
-   ${db.projects.map(p=>`<div style="margin:12px 0"><b>${esc(p.name)}</b><span class="muted" style="float:right">%${p.progress}</span><div class="progress"><i style="width:${p.progress}%"></i></div></div>`).join("")}
-   <div class="note">Satış, tahsilat, stok, şikayet ve şantiye durumu tek panelde takip edilir.</div>
-  </div>
- </div>
- <div class="section card"><div class="sectionhead"><h2>Son hareketler</h2></div>${table(["Tarih","Müşteri","Proje","Aşama","Sorumlu"],db.leads.slice(-8).reverse().map(l=>`<tr><td>${esc(l.date)}</td><td>${esc(l.customer)}</td><td>${esc(l.project)}</td><td><span class="badge blue">${esc(l.stage)}</span></td><td>${esc(l.owner)}</td></tr>`).join(""))}</div>`;
-}
-function dueCustomers(){return db.customers.filter(c=>c.next).sort((a,b)=>new Date(a.next)-new Date(b.next)).slice(0,7)}
-function crm(){
- document.getElementById("content").innerHTML=`<div class="toolbar"><input id="crmSearch" placeholder="Müşteri, telefon, proje ara" oninput="crmTable()">${btn("＋ Müşteri Ekle","newCustomer()")}${btn("Excel Verisini CSV Al","exportCSV('customers')","btn gray")}</div><div class="card" id="crmTable"></div>`;
- crmTable()
-}
-function crmTable(){
- const q=(document.getElementById("crmSearch")?.value||"").toLowerCase();
- const arr=db.customers.filter(c=>Object.values(c).join(" ").toLowerCase().includes(q));
- document.getElementById("crmTable").innerHTML=table(["Müşteri","Telefon","Proje","Aşama","Bütçe","Sorumlu","Sonraki Takip","Not",""],arr.map(c=>`<tr><td><b>${esc(c.name)}</b><br><span class="muted">${esc(c.status)}</span></td><td>${esc(c.phone)}</td><td>${esc(c.project)}</td><td><span class="badge blue">${esc(c.stage)}</span></td><td>${money(c.budget)}</td><td>${esc(c.owner)}</td><td>${esc(c.next||"-")}</td><td>${(c.notes||[]).length}</td><td>${btn("360°","customer360("+c.id+")","btn light")}</td></tr>`).join(""))}
-function customer360(id){
- const c=db.customers.find(x=>x.id===id); if(!c)return;
- c.notes=c.notes||[];
- const comm=db.communications.filter(x=>x.customer===c.name), pay=db.payments.filter(x=>x.customer===c.name), sales=db.sales.filter(x=>x.customer===c.name);
- const noteRows=c.notes.slice().reverse().map(n=>`<tr><td>${esc(n.date||"")}</td><td>${esc(n.by||"")}</td><td>${esc(n.text||"")}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">Henüz süreç notu yok.</td></tr>`;
- showModal("Müşteri 360° — "+c.name,`<div class="grid2"><div><b>İletişim</b><p>${esc(c.phone||"-")}<br>${esc(c.source||"-")}<br>Sorumlu: ${esc(c.owner||"-")}</p></div><div><b>İhtiyaç</b><p>${esc(c.project||"-")} • ${esc(c.unitType||"-")}<br>Bütçe: ${money(c.budget)}<br>Aşama: ${esc(c.stage)}</p></div></div><div class="section card" style="box-shadow:none"><b>Genel Not</b><p>${esc(c.note||"-")}</p></div><div class="section card" style="box-shadow:none"><div class="sectionhead"><h3>Müşteriye Özel Süreç Notları</h3>${btn("＋ Yeni Not","newCustomerNote("+id+")","btn")}</div>${table(["Tarih / Saat","Ekleyen","Not"],noteRows)}</div><div class="section card" style="box-shadow:none"><b>İletişim Geçmişi</b><p>${comm.length} kayıt • Ödeme: ${pay.length} • Satış: ${sales.length}</p></div>${btn("İletişim Ekle","newCommunication('"+esc(c.name)+"')","btn light")} ${btn("Takip Görevi","newTask('"+esc(c.name)+"')","btn light")} ${btn("Düzenle","editCustomer("+id+")","btn")}`);
-}
-function newCustomerNote(id){showModal("Yeni Süreç Notu",form([{id:"noteText",label:"Müşteri süreci notu",type:"textarea",full:true}],`saveCustomerNote(${id})`))}
-function saveCustomerNote(id){const c=db.customers.find(x=>x.id===id);if(!c)return;c.notes=c.notes||[];const text=val("noteText").trim();if(!text)return;c.notes.push({date:new Date().toLocaleString("tr-TR"),by:currentUser||"Kullanıcı",text});c.note=text;save();closeModal();customer360(id)}
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
+header{background:#17202a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+h1{margin:0;font-size:21px}.wrap{max-width:1180px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 5px 20px #0000000b;margin-bottom:18px}
+input,select,textarea,button{width:100%;padding:11px;border:1px solid #d7dce2;border-radius:9px;font:inherit}textarea{min-height:90px}
+button{background:#17202a;color:#fff;border:0;cursor:pointer;font-weight:600}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{font-size:13px;font-weight:600;display:block;margin-bottom:5px}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tabs button{width:auto;white-space:nowrap}.tabs button.active{background:#7a5c38}
+table{width:100%;border-collapse:collapse;margin-top:12px}th,td{padding:9px;border-bottom:1px solid #edf0f3;text-align:left;font-size:13px}th{color:#6b7280}
+.muted{color:#6b7280;font-size:13px}.hidden{display:none}.login{max-width:420px;margin:10vh auto}.msg{padding:10px;border-radius:9px;background:#fff4e5;margin:10px 0;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#fff;padding:16px;border-radius:12px}.stat b{display:block;font-size:25px;margin-top:5px}
+@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}header{padding:15px}.wrap{margin:15px auto}}
+</style>
+</head>
+<body>
+<div id="login" class="login card">
+<h1>Reyyan İnşaat Takip</h1><p class="muted">Ortak kullanım sistemi</p>
+<div id="loginMsg"></div>
+<label>E-posta</label><input id="email" type="email" autocomplete="username">
+<label style="margin-top:10px">Şifre</label><input id="password" type="password" autocomplete="current-password">
+<button id="loginBtn" style="margin-top:14px">Giriş Yap</button>
+</div>
 
-function funnel(){
- const stages=["Arayan","Görüşülen","Ofise Gelen","Daire Gösterildi","Teklif","Pazarlık","Rezervasyon","Satış"];
- document.getElementById("content").innerHTML=`<div class="grid">${stages.map(s=>card(s,db.leads.filter(l=>l.stage===s).length,"lead")).join("")}</div><div class="section card"><div class="sectionhead"><h2>Fırsatlar</h2>${btn("＋ Fırsat Ekle","newLead()")}</div>${table(["Müşteri","Proje","Aşama","Kaynak","Sorumlu","Tarih",""],db.leads.map(l=>`<tr><td>${esc(l.customer)}</td><td>${esc(l.project)}</td><td><span class="badge blue">${esc(l.stage)}</span></td><td>${esc(l.source)}</td><td>${esc(l.owner)}</td><td>${esc(l.date)}</td><td>${btn("Düzenle","editLead("+l.id+")","btn light")}</td></tr>`).join(""))}</div>`
+<div id="app" class="hidden">
+<header><h1>Reyyan İnşaat Takip</h1><button id="logout" style="width:auto">Çıkış</button></header>
+<div class="wrap">
+<div class="stats">
+<div class="stat">Müşteriler<b id="countCustomers">0</b></div>
+<div class="stat">Projeler<b id="countProjects">0</b></div>
+<div class="stat">Satışlar<b id="countSales">0</b></div>
+</div>
+<div class="tabs">
+<button data-tab="customers">Müşteriler</button><button data-tab="projects">Projeler</button>
+<button data-tab="sales">Satışlar</button><button data-tab="payments">Ödemeler</button>
+<button data-tab="communications">Görüşmeler</button><button data-tab="requests">Talepler / Şikâyetler</button>
+<button data-tab="after_sales">Teslimat / Satış Sonrası</button>
+</div>
+<div id="panel" class="card"></div>
+</div></div>
+
+<script>
+const C=window.REYYAN_CONFIG;
+let client=null,currentTab="customers";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function loginMsg(t){$("loginMsg").innerHTML='<div class="msg">'+esc(t)+'</div>'}
+
+const defs={
+customers:{title:"Müşteriler",table:"customers",fields:[["full_name","Ad Soyad","text",1],["phone","Telefon","text"],["email","E-posta","email"],["notes","Notlar","textarea"]],cols:["full_name","phone","email","notes"]},
+projects:{title:"Projeler",table:"projects",fields:[["project_name","Proje Adı","text",1],["location","Lokasyon","text"],["status","Durum","text"],["notes","Notlar","textarea"]],cols:["project_name","location","status","notes"]},
+sales:{title:"Satışlar",table:"sales",fields:[["customer_id","Müşteri ID","text",1],["project_id","Proje ID","text",1],["property_name","Bağımsız Bölüm / Gayrimenkul","text",1],["sale_price","Satış Fiyatı","number",1],["sale_date","Satış Tarihi","date",1],["payment_status","Ödeme Durumu","text"],["notes","Notlar","textarea"]],cols:["property_name","sale_price","sale_date","payment_status","notes"]},
+payments:{title:"Ödemeler",table:"payments",fields:[["sale_id","Satış ID","text",1],["customer_id","Müşteri ID","text",1],["amount","Tutar","number",1],["due_date","Vade Tarihi","date",1],["paid_date","Ödeme Tarihi","date"],["status","Durum","text",1],["payment_method","Ödeme Yöntemi","text"],["notes","Notlar","textarea"]],cols:["amount","due_date","paid_date","status","payment_method","notes"]},
+communications:{title:"Görüşmeler",table:"communications",fields:[["customer_id","Müşteri ID","text",1],["communication_type","Görüşme Türü","text",1],["communication_date","Tarih","datetime-local"],["subject","Konu","text"],["notes","Notlar","textarea"]],cols:["communication_type","communication_date","subject","notes"]},
+requests:{title:"Talepler / Şikâyetler",table:"customer_requests",fields:[["customer_id","Müşteri ID","text",1],["request_type","Tür","text",1],["title","Başlık","text",1],["description","Açıklama","textarea"],["status","Durum","text",1],["priority","Öncelik","text"]],cols:["request_type","title","status","priority","description"]},
+after_sales:{title:"Teslimat / Satış Sonrası",table:"after_sales",fields:[["customer_id","Müşteri ID","text",1],["sale_id","Satış ID","text",1],["delivery_date","Teslim Tarihi","date"],["delivery_status","Teslimat Durumu","text",1],["customer_satisfaction","Müşteri Memnuniyeti","text"],["follow_up_date","Takip Tarihi","date"],["notes","Notlar","textarea"]],cols:["delivery_status","customer_satisfaction","follow_up_date","notes"]}
+};
+
+async function boot(){
+if(!C||!C.supabaseUrl||!C.supabaseKey||C.supabaseKey==="BURAYA_PUBLISHABLE_KEY"){loginMsg("config.js içinde Publishable key eksik.");return}
+client=supabase.createClient(C.supabaseUrl,C.supabaseKey);
+const {data}=await client.auth.getSession(); if(data.session) showApp();
+client.auth.onAuthStateChange((_e,s)=>s?showApp():showLogin());
 }
-function units(){
- document.getElementById("content").innerHTML=`<div class="grid">${card("Toplam Ünite",db.units.length)}${card("Satışta",db.units.filter(u=>u.status==="Satışta").length)}${card("Rezerve",db.units.filter(u=>u.status==="Rezerve").length)}${card("Satıldı",db.units.filter(u=>u.status==="Satıldı").length)}</div><div class="section card"><div class="sectionhead"><h2>Stok / Portföy</h2>${btn("＋ Ünite Ekle","newUnit()")}</div>${table(["Proje","Ünite","Tip","m²","Kat","Fiyat","Durum",""],db.units.map(u=>`<tr><td>${esc(u.project)}</td><td><b>${esc(u.unit)}</b></td><td>${esc(u.type)}</td><td>${esc(u.m2)}</td><td>${esc(u.floor)}</td><td>${money(u.price)}</td><td><span class="badge ${u.status==="Satışta"?"green":u.status==="Rezerve"?"yellow":"redbg"}">${esc(u.status)}</span></td><td>${btn("Düzenle","editUnit("+u.id+")","btn light")}</td></tr>`).join(""))}</div>`
+function showLogin(){$("app").classList.add("hidden");$("login").classList.remove("hidden")}
+async function showApp(){$("login").classList.add("hidden");$("app").classList.remove("hidden");await loadTab(currentTab);updateStats()}
+$("loginBtn").onclick=async()=>{
+loginMsg("Giriş yapılıyor...");
+const {error}=await client.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+if(error)loginMsg(error.message);
+};
+$("logout").onclick=()=>client.auth.signOut();
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>loadTab(b.dataset.tab));
+
+async function loadTab(tab){
+currentTab=tab;document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+const d=defs[tab];let h="<h2>"+d.title+"</h2><form id='form'><div class='grid'>";
+for(const [n,l,t,r] of d.fields)h+="<div><label>"+l+"</label>"+(t==="textarea"?`<textarea id="f_${n}" ${r?"required":""}></textarea>`:`<input id="f_${n}" type="${t}" ${r?"required":""}>`)+"</div>";
+h+="</div><button style='margin-top:14px'>Kaydet</button></form><div id='tableWrap'><p class='muted'>Yükleniyor...</p></div>";
+$("panel").innerHTML=h;$("form").onsubmit=async e=>{e.preventDefault();await insertRow(d)};await renderRows(d);
 }
-function sales(){
- document.getElementById("content").innerHTML=`<div class="grid">${card("Toplam Satış",db.sales.length)}${card("Satış Tutarı",money(db.sales.reduce((a,s)=>a+s.price,0)))}${card("Rezervasyon",db.reservations.length)}${card("İptal",db.sales.filter(s=>s.status==="İptal").length)}</div><div class="section card"><div class="sectionhead"><h2>Satışlar</h2>${btn("＋ Satış Ekle","newSale()")}</div>${table(["Tarih","Müşteri","Proje","Ünite","Tutar","Sorumlu","Durum"],db.sales.map(s=>`<tr><td>${esc(s.date)}</td><td>${esc(s.customer)}</td><td>${esc(s.project)}</td><td>${esc(s.unit)}</td><td>${money(s.price)}</td><td>${esc(s.owner)}</td><td><span class="badge green">${esc(s.status)}</span></td></tr>`).join(""))}</div>`
+async function insertRow(d){
+let o={};for(const [n] of d.fields){const v=$("f_"+n).value;if(v!=="")o[n]=v}
+if(o.sale_price)o.sale_price=Number(o.sale_price);if(o.amount)o.amount=Number(o.amount);
+const {error}=await client.from(d.table).insert(o);if(error){alert("Kayıt eklenemedi: "+error.message);return}
+$("form").reset();await renderRows(d);updateStats();
 }
-function finance(){
- const due=db.payments.filter(p=>p.status!=="Ödendi"), total=due.reduce((a,p)=>a+p.amount,0);
- document.getElementById("content").innerHTML=`<div class="grid">${card("Bekleyen Tahsilat",money(total))}${card("Ödenen",money(db.payments.filter(p=>p.status==="Ödendi").reduce((a,p)=>a+p.amount,0)))}${card("Vadesi Geçen",db.payments.filter(p=>p.status==="Gecikti").length)}${card("Ödeme Kaydı",db.payments.length)}</div><div class="section card"><div class="sectionhead"><h2>Tahsilat Takibi</h2>${btn("＋ Ödeme Planı","newPayment()")}</div>${table(["Vade","Müşteri","Tutar","Durum","Not"],db.payments.map(p=>`<tr><td>${esc(p.due)}</td><td>${esc(p.customer)}</td><td>${money(p.amount)}</td><td><span class="badge ${p.status==="Ödendi"?"green":p.status==="Gecikti"?"redbg":"yellow"}">${esc(p.status)}</span></td><td>${esc(p.note||"")}</td></tr>`).join(""))}</div>`
+async function renderRows(d){
+let q=client.from(d.table).select("*");if(d.table!=="communications")q=q.order("created_at",{ascending:false});else q=q.order("communication_date",{ascending:false});
+const {data,error}=await q.limit(100);
+if(error){$("tableWrap").innerHTML="<div class='msg'>Tablo okunamadı: "+esc(error.message)+"</div>";return}
+if(!data?.length){$("tableWrap").innerHTML="<p class='muted'>Henüz kayıt yok.</p>";return}
+let h="<table><thead><tr>"+d.cols.map(c=>"<th>"+esc(c)+"</th>").join("")+"</tr></thead><tbody>";
+for(const r of data)h+="<tr>"+d.cols.map(c=>"<td>"+esc(r[c])+"</td>").join("")+"</tr>";h+="</tbody></table>";$("tableWrap").innerHTML=h;
 }
-function tasks(){
- const arr=db.tasks.slice().sort((a,b)=>String(a.due).localeCompare(String(b.due)));
- document.getElementById("content").innerHTML=`<div class="toolbar">${btn("＋ Görev Ekle","newTask()")}</div><div class="card">${table(["Tarih","Görev","Müşteri","Sorumlu","Durum"],arr.map(t=>`<tr><td>${esc(t.due)}</td><td>${esc(t.title)}</td><td>${esc(t.customer||"-")}</td><td>${esc(t.owner)}</td><td><span class="badge ${t.status==="Tamamlandı"?"green":"yellow"}">${esc(t.status)}</span></td></tr>`).join(""))}</div>`
+async function updateStats(){
+for(const [id,t] of [["countCustomers","customers"],["countProjects","projects"],["countSales","sales"]]){const {count}=await client.from(t).select("*",{count:"exact",head:true});$(id).textContent=count??0}
 }
-function construction(){
- document.getElementById("content").innerHTML=`<div class="grid">${db.projects.map(p=>card(p.name,"%"+p.progress,p.status)).join("")}</div><div class="section card"><div class="sectionhead"><h2>Şantiye / İş Kalemleri</h2>${btn("＋ İş Kalemi","newConstruction()")}</div>${table(["Proje","Aşama","İş","Sorumlu","Termin","İlerleme","Durum"],db.construction.map(x=>`<tr><td>${esc(x.project)}</td><td>${esc(x.stage)}</td><td>${esc(x.item)}</td><td>${esc(x.owner)}</td><td>${esc(x.due)}</td><td><div style="min-width:100px">%${x.progress}<div class="progress"><i style="width:${x.progress}%"></i></div></td><td>${esc(x.status)}</td></tr>`).join(""))}</div>`
-}
-function procurement(){
- document.getElementById("content").innerHTML=`<div class="grid">${card("Tedarikçi",db.suppliers.length)}${card("Satın Alma",db.purchases.length)}${card("Gider",money(db.expenses.reduce((a,x)=>a+x.amount,0)))}${card("Açık Sipariş",db.purchases.filter(x=>x.status!=="Teslim").length)}</div><div class="section grid2"><div class="card"><div class="sectionhead"><h2>Tedarikçiler</h2>${btn("＋ Tedarikçi","newSupplier()")}</div>${table(["Firma","Yetkili","Telefon","Kategori"],db.suppliers.map(s=>`<tr><td>${esc(s.name)}</td><td>${esc(s.contact)}</td><td>${esc(s.phone)}</td><td>${esc(s.category)}</td></tr>`).join(""))}</div><div class="card"><div class="sectionhead"><h2>Satın Alma</h2>${btn("＋ Sipariş","newPurchase()")}</div>${table(["Tarih","Tedarikçi","Proje","Tutar","Durum"],db.purchases.map(p=>`<tr><td>${esc(p.date)}</td><td>${esc(p.supplier)}</td><td>${esc(p.project)}</td><td>${money(p.amount)}</td><td>${esc(p.status)}</td></tr>`).join(""))}</div></div>`
-}
-function service(){
- document.getElementById("content").innerHTML=`<div class="grid">${card("Talep",db.requests.length)}${card("Şikayet",db.complaints.length)}${card("Çözülmemiş",db.complaints.filter(x=>x.status!=="Çözüldü").length)}${card("Teslim / Sonrası",db.afterSales.length)}</div><div class="section grid2"><div class="card"><div class="sectionhead"><h2>Talepler & Şikayetler</h2>${btn("＋ Kayıt","newService()")}</div>${table(["Tür","Müşteri","Konu","Sorumlu","Durum"],db.requests.concat(db.complaints).map(x=>`<tr><td>${esc(x.kind||"Talep")}</td><td>${esc(x.customer)}</td><td>${esc(x.topic)}</td><td>${esc(x.owner||"-")}</td><td>${esc(x.status)}</td></tr>`).join(""))}</div><div class="card"><div class="sectionhead"><h2>Teslim / Satış Sonrası</h2>${btn("＋ Takip","newAfterSales()")}</div>${table(["Müşteri","Ünite","Tarih","Konu","Durum"],db.afterSales.map(x=>`<tr><td>${esc(x.customer)}</td><td>${esc(x.unit)}</td><td>${esc(x.date)}</td><td>${esc(x.topic)}</td><td>${esc(x.status)}</td></tr>`).join(""))}</div></div>`
-}
-function documents(){
- document.getElementById("content").innerHTML=`<div class="card"><div class="sectionhead"><h2>Evrak Merkezi</h2>${btn("＋ Evrak Kaydı","newDocument()")}</div><p class="note">Bu demo sürümünde dosyanın kendisi yerine evrak kaydı tutulur. Merkezi sürümde sözleşme, kimlik, ödeme dekontu, teslim tutanağı ve proje belgeleri güvenli dosya depolamaya bağlanabilir.</p>${table(["Tarih","Müşteri/Proje","Belge","Durum","Not"],db.documents.map(d=>`<tr><td>${esc(d.date)}</td><td>${esc(d.ref)}</td><td>${esc(d.type)}</td><td>${esc(d.status)}</td><td>${esc(d.note||"")}</td></tr>`).join(""))}</div>`
-}
-function reports(){
- const sources={};db.customers.forEach(c=>sources[c.source||"Bilinmiyor"]=(sources[c.source||"Bilinmiyor"]||0)+1);
- document.getElementById("content").innerHTML=`<div class="grid">${card("Müşteri",db.customers.length)}${card("Fırsat",db.leads.length)}${card("Satış",db.sales.length)}${card("Tahsilat",money(db.payments.filter(p=>p.status==="Ödendi").reduce((a,p)=>a+p.amount,0)))}</div><div class="section grid2"><div class="card"><h2>Lead Kaynakları</h2>${Object.entries(sources).map(([k,v])=>`<p><b>${esc(k)}</b> <span style="float:right">${v}</span></p>`).join("")}</div><div class="card"><h2>Proje Özeti</h2>${db.projects.map(p=>`<p><b>${esc(p.name)}</b><span style="float:right">${db.customers.filter(c=>c.project===p.name).length} müşteri</span></p>`).join("")}</div></div><div class="section card"><div class="sectionhead"><h2>Rapor / Veri Dışa Aktarma</h2></div>${btn("Müşteriler CSV","exportCSV('customers')","btn gray")} ${btn("Satışlar CSV","exportCSV('sales')","btn gray")} ${btn("Stok CSV","exportCSV('units')","btn gray")} ${btn("Yedek JSON","backup()","btn light")}</div>`
-}
-function staff(){
- document.getElementById("content").innerHTML=`<div class="card"><div class="sectionhead"><h2>Personel & Yetki</h2>${btn("＋ Personel","newStaff()")}</div>${table(["Ad","Rol","Atanan Müşteri","Görev"],db.users.map(u=>`<tr><td><b>${esc(u.name)}</b></td><td>${esc(u.role)}</td><td>${db.customers.filter(c=>c.owner===u.name).length}</td><td>${db.tasks.filter(t=>t.owner===u.name&&t.status!=="Tamamlandı").length}</td></tr>`).join(""))}</div>`
-}
-function settings(){
- document.getElementById("content").innerHTML=`<div class="grid2"><div class="card"><h2>Proje Ayarları</h2>${table(["Proje","Durum","İlerleme"],db.projects.map(p=>`<tr><td>${esc(p.name)}</td><td>${esc(p.status)}</td><td>%${p.progress}</td></tr>`).join(""))}${btn("＋ Proje","newProject()")}</div><div class="card"><h2>Veri Yönetimi</h2><p>Bulut bağlantısı aktifse kayıtlar merkezi veritabanında tutulur ve ekip üyeleriyle senkronize edilir; bağlantı yoksa yerel demo çalışır.</p>${btn("JSON Yedek Al","backup()","btn light")} ${btn("JSON Geri Yükle","restore()","btn gray")} ${btn("Demo Verisini Temizle","resetDB()","btn red")}<p class="note" style="margin-top:12px">Merkezi kullanım için Supabase bağlantısını config.js ile tanımlayın; üç kullanıcıya ayrı hesap verin.</p></div></div>`
-}
-function showModal(title,body){document.getElementById("modalTitle").textContent=title;document.getElementById("modalBody").innerHTML=body;document.getElementById("modal").classList.add("open")}
-function closeModal(){document.getElementById("modal").classList.remove("open")}
-function form(fields,savefn){
- return `<div class="formgrid">${fields.map(f=>{
-  const cls=f.full?'full':'';
-  const label=esc(f.label);
-  if(f.type==="textarea") return `<div class="${cls}"><label>${label}</label><textarea id="f_${f.id}" rows="3">${esc(f.value||"")}</textarea></div>`;
-  if(f.type==="select") return `<div class="${cls}"><label>${label}</label><select id="f_${f.id}">${(f.options||[]).map(o=>`<option ${o===f.value?'selected':''}>${esc(o)}</option>`).join("")}</select></div>`;
-  return `<div class="${cls}"><label>${label}</label><input class="input" id="f_${f.id}" type="${f.type||'text'}" value="${esc(f.value||"")}"></div>`;
- }).join("")}</div><div class="actions">${btn("İptal","closeModal()","btn gray")}${btn("Kaydet",savefn)}</div>`
-}
-function val(id){return document.getElementById("f_"+id)?.value||""}
-const owners=["Canan Akbaş","Ahmet","Raed Alhesrıya"];
-const stages=["Arayan","Görüşülen","Ofise Gelen","Daire Gösterildi","Teklif","Pazarlık","Rezervasyon","Satış"];
-function newCustomer(existing=null){
- const c=existing||{};showModal(existing?"Müşteri Düzenle":"Yeni Müşteri",form([
-  {id:"name",label:"Ad Soyad / Firma",value:c.name},{id:"phone",label:"Telefon",value:c.phone},
-  {id:"source",label:"Kaynak",value:c.source},{id:"project",label:"Proje",value:c.project,type:"select",options:db.projects.map(p=>p.name)},
-  {id:"stage",label:"Satış Aşaması",value:c.stage,type:"select",options:stages},{id:"budget",label:"Bütçe",value:c.budget,type:"number"},
-  {id:"unitType",label:"İstenen Tip",value:c.unitType},{id:"owner",label:"Sorumlu",value:c.owner,type:"select",options:owners},
-  {id:"next",label:"Sonraki Takip",value:c.next,type:"date"},{id:"status",label:"Müşteri Sıcaklığı",value:c.status||"Yeni",type:"select",options:["Yeni","Ilık","Sıcak","Soğuk"]},
-  {id:"note",label:"Not",value:c.note,type:"textarea",full:true}
- ],`saveCustomer(${existing?existing.id:"null"})`))
-}
-function saveCustomer(id){const old=id?db.customers.find(x=>x.id===id):null;const obj={id:id||Date.now(),name:val("name"),phone:val("phone"),source:val("source"),project:val("project"),stage:val("stage"),budget:Number(val("budget"))||0,unitType:val("unitType"),owner:val("owner"),next:val("next"),status:val("status"),last:new Date().toISOString().slice(0,10),note:val("note"),notes:(old&&old.notes)||[]};if(id){Object.assign(old,obj)}else db.customers.push(obj);save();closeModal();go("crm")}
-function editCustomer(id){newCustomer(db.customers.find(x=>x.id===id))}
-function newLead(){showModal("Yeni Fırsat",form([{id:"customer",label:"Müşteri"},{id:"project",label:"Proje",type:"select",options:db.projects.map(p=>p.name)},{id:"stage",label:"Aşama",type:"select",options:stages},{id:"source",label:"Kaynak"},{id:"owner",label:"Sorumlu",type:"select",options:owners},{id:"date",label:"Tarih",type:"date"},{id:"note",label:"Not",type:"textarea",full:true}],"saveLead()"))}
-function saveLead(){db.leads.push({id:Date.now(),customer:val("customer"),project:val("project"),stage:val("stage"),source:val("source"),owner:val("owner"),date:val("date"),note:val("note")});save();closeModal();go("funnel")}
-function editLead(id){const l=db.leads.find(x=>x.id===id);showModal("Fırsat Düzenle",form([{id:"customer",label:"Müşteri",value:l.customer},{id:"project",label:"Proje",value:l.project,type:"select",options:db.projects.map(p=>p.name)},{id:"stage",label:"Aşama",value:l.stage,type:"select",options:stages},{id:"source",label:"Kaynak",value:l.source},{id:"owner",label:"Sorumlu",value:l.owner,type:"select",options:owners},{id:"date",label:"Tarih",value:l.date,type:"date"},{id:"note",label:"Not",value:l.note,type:"textarea",full:true}],`saveLeadEdit(${id})`))}
-function saveLeadEdit(id){Object.assign(db.leads.find(x=>x.id===id),{customer:val("customer"),project:val("project"),stage:val("stage"),source:val("source"),owner:val("owner"),date:val("date"),note:val("note")});save();closeModal();go("funnel")}
-function newUnit(existing=null){const u=existing||{};showModal(existing?"Ünite Düzenle":"Yeni Ünite",form([{id:"project",label:"Proje",value:u.project,type:"select",options:db.projects.map(p=>p.name)},{id:"unit",label:"Ünite No",value:u.unit},{id:"type",label:"Tip",value:u.type},{id:"m2",label:"m²",value:u.m2,type:"number"},{id:"floor",label:"Kat",value:u.floor},{id:"price",label:"Fiyat",value:u.price,type:"number"},{id:"status",label:"Durum",value:u.status||"Satışta",type:"select",options:["Satışta","Rezerve","Satıldı","Blokeli"]}],`saveUnit(${existing?existing.id:"null"})`))}
-function saveUnit(id){const o={id:id||Date.now(),project:val("project"),unit:val("unit"),type:val("type"),m2:Number(val("m2"))||0,floor:val("floor"),price:Number(val("price"))||0,status:val("status")};if(id)Object.assign(db.units.find(x=>x.id===id),o);else db.units.push(o);save();closeModal();go("units")}
-function editUnit(id){newUnit(db.units.find(x=>x.id===id))}
-function newSale(){showModal("Yeni Satış",form([{id:"date",label:"Satış Tarihi",type:"date"},{id:"customer",label:"Müşteri"},{id:"project",label:"Proje",type:"select",options:db.projects.map(p=>p.name)},{id:"unit",label:"Ünite"},{id:"price",label:"Satış Tutarı",type:"number"},{id:"owner",label:"Sorumlu",type:"select",options:owners},{id:"status",label:"Durum",type:"select",options:["Kesinleşti","İptal"]}],`saveSale()`))}
-function saveSale(){db.sales.push({id:Date.now(),date:val("date"),customer:val("customer"),project:val("project"),unit:val("unit"),price:Number(val("price"))||0,owner:val("owner"),status:val("status")});save();closeModal();go("sales")}
-function newPayment(){showModal("Ödeme / Tahsilat Kaydı",form([{id:"due",label:"Vade",type:"date"},{id:"customer",label:"Müşteri"},{id:"amount",label:"Tutar",type:"number"},{id:"status",label:"Durum",type:"select",options:["Bekliyor","Ödendi","Gecikti"]},{id:"note",label:"Not",type:"textarea",full:true}],`savePayment()`))}
-function savePayment(){db.payments.push({id:Date.now(),due:val("due"),customer:val("customer"),amount:Number(val("amount"))||0,status:val("status"),note:val("note")});save();closeModal();go("finance")}
-function newTask(customer=""){showModal("Yeni Görev / Takip",form([{id:"title",label:"Görev"},{id:"customer",label:"Müşteri",value:customer},{id:"due",label:"Tarih",type:"date"},{id:"owner",label:"Sorumlu",value:currentUser,type:"select",options:owners},{id:"status",label:"Durum",type:"select",options:["Bekliyor","Tamamlandı"]}],`saveTask()`))}
-function saveTask(){db.tasks.push({id:Date.now(),title:val("title"),customer:val("customer"),due:val("due"),owner:val("owner"),status:val("status")});save();closeModal();go("tasks")}
-function newConstruction(){showModal("Yeni İş Kalemi",form([{id:"project",label:"Proje",type:"select",options:db.projects.map(p=>p.name)},{id:"stage",label:"Aşama"},{id:"item",label:"İş Kalemi"},{id:"owner",label:"Sorumlu",type:"select",options:owners},{id:"due",label:"Termin",type:"date"},{id:"progress",label:"İlerleme %",type:"number"},{id:"status",label:"Durum",type:"select",options:["Planlandı","Devam","Tamamlandı","Gecikti"]}],`saveConstruction()`))}
-function saveConstruction(){db.construction.push({id:Date.now(),project:val("project"),stage:val("stage"),item:val("item"),owner:val("owner"),due:val("due"),progress:Number(val("progress"))||0,status:val("status")});save();closeModal();go("construction")}
-function newSupplier(){showModal("Yeni Tedarikçi",form([{id:"name",label:"Firma"},{id:"contact",label:"Yetkili"},{id:"phone",label:"Telefon"},{id:"category",label:"Kategori"}],"saveSupplier()"))}
-function saveSupplier(){db.suppliers.push({id:Date.now(),name:val("name"),contact:val("contact"),phone:val("phone"),category:val("category")});save();closeModal();go("procurement")}
-function newPurchase(){showModal("Yeni Satın Alma",form([{id:"date",label:"Tarih",type:"date"},{id:"supplier",label:"Tedarikçi"},{id:"project",label:"Proje",type:"select",options:db.projects.map(p=>p.name)},{id:"amount",label:"Tutar",type:"number"},{id:"status",label:"Durum",type:"select",options:["Sipariş","Kısmi Teslim","Teslim"]}],`savePurchase()`))}
-function savePurchase(){db.purchases.push({id:Date.now(),date:val("date"),supplier:val("supplier"),project:val("project"),amount:Number(val("amount"))||0,status:val("status")});save();closeModal();go("procurement")}
-function newService(){showModal("Müşteri Hizmetleri Kaydı",form([{id:"kind",label:"Tür",type:"select",options:["Talep","Şikayet"]},{id:"customer",label:"Müşteri"},{id:"topic",label:"Konu"},{id:"owner",label:"Sorumlu",type:"select",options:owners},{id:"status",label:"Durum",type:"select",options:["Açık","İşlemde","Çözüldü"]}],`saveService()`))}
-function saveService(){const o={id:Date.now(),kind:val("kind"),customer:val("customer"),topic:val("topic"),owner:val("owner"),status:val("status")};(o.kind==="Şikayet"?db.complaints:db.requests).push(o);save();closeModal();go("service")}
-function newAfterSales(){showModal("Teslim / Satış Sonrası",form([{id:"customer",label:"Müşteri"},{id:"unit",label:"Ünite"},{id:"date",label:"Tarih",type:"date"},{id:"topic",label:"Konu"},{id:"status",label:"Durum",type:"select",options:["Planlandı","Devam","Tamamlandı"]}],`saveAfterSales()`))}
-function saveAfterSales(){db.afterSales.push({id:Date.now(),customer:val("customer"),unit:val("unit"),date:val("date"),topic:val("topic"),status:val("status")});save();closeModal();go("service")}
-function newDocument(){showModal("Evrak Kaydı",form([{id:"date",label:"Tarih",type:"date"},{id:"ref",label:"Müşteri / Proje"},{id:"type",label:"Belge Türü"},{id:"status",label:"Durum",type:"select",options:["Bekliyor","Mevcut","Eksik"]},{id:"note",label:"Not",type:"textarea",full:true}],`saveDocument()`))}
-function saveDocument(){db.documents.push({id:Date.now(),date:val("date"),ref:val("ref"),type:val("type"),status:val("status"),note:val("note")});save();closeModal();go("documents")}
-function newCommunication(customer=""){showModal("İletişim Kaydı",form([{id:"customer",label:"Müşteri",value:customer},{id:"date",label:"Tarih",type:"date"},{id:"channel",label:"Kanal",type:"select",options:["Telefon","WhatsApp","Instagram","Ofis","E-posta"]},{id:"note",label:"Görüşme Notu",type:"textarea",full:true}],`saveCommunication()`))}
-function saveCommunication(){db.communications.push({id:Date.now(),customer:val("customer"),date:val("date"),channel:val("channel"),note:val("note")});save();closeModal()}
-function newStaff(){showModal("Personel Ekle",form([{id:"name",label:"Ad Soyad"},{id:"role",label:"Rol",type:"select",options:["Şirket Müdürü","Satış","Müşteri İlişkileri","Finans","Şantiye","Satın Alma"]}],`saveStaff()`))}
-function saveStaff(){db.users.push({id:Date.now(),name:val("name"),role:val("role")});save();closeModal();go("staff")}
-function newProject(){showModal("Yeni Proje",form([{id:"name",label:"Proje Adı"},{id:"status",label:"Durum",type:"select",options:["Planlanıyor","Devam Ediyor","Tamamlandı"]},{id:"progress",label:"İlerleme %",type:"number"}],"saveProject()"))}
-function saveProject(){db.projects.push({id:Date.now(),name:val("name"),status:val("status"),progress:Number(val("progress"))||0,budget:0});save();closeModal();go("settings")}
-function exportCSV(type){const arr=db[type]||[];const keys=[...new Set(arr.flatMap(o=>Object.keys(o)))];const csv=[keys.join(";"),...arr.map(o=>keys.map(k=>`"${String(o[k]??"").replaceAll('"','""')}"`).join(";"))].join("\\n");download("reyyan_"+type+".csv","text/csv;charset=utf-8;",csv)}
-function download(name,type,data){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\\ufeff"+data],{type}));a.download=name;a.click()}
-function backup(){download("reyyan_inşaat_v6_yedek.json","application/json",JSON.stringify(db,null,2))}
-function restore(){const i=document.createElement("input");i.type="file";i.accept=".json";i.onchange=()=>{const r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);save();go(page);alert("Yedek geri yüklendi.")}catch(e){alert("Geçersiz JSON.")}};r.readAsText(i.files[0])};i.click()}
-function resetDB(){if(confirm("Demo verisi silinsin mi?")){db=structuredClone(seed);save();go("dashboard")}}
+boot();
 </script>
-</body></html>
+</body>
+</html>
