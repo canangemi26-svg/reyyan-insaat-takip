@@ -1,0 +1,19 @@
+REYYAN İNŞAAT TAKİP — BULUT KURULUMU
+
+Bu paket Supabase bağlantı bilgileri girilmiş şekilde hazırlanmıştır.
+
+1) Supabase > SQL Editor bölümüne girin.
+2) Bu klasördeki schema.sql dosyasının tamamını çalıştırın.
+3) Supabase > Authentication > Users bölümünde Canan, Ahmet ve Raed hesaplarının oluşturulduğundan emin olun.
+4) index.html'i GitHub Pages gibi HTTPS çalışan bir web adresinde açın.
+5) E-posta + şifre ile giriş yapın.
+
+ÇALIŞMA MANTIĞI
+- Üç kullanıcı aynı public.company_state kaydını kullanır.
+- Kaydedilen veriler merkezi Supabase veritabanına gider.
+- Açık olan diğer kullanıcı ekranları Realtime ile güncellenir.
+- Yerel JSON yedekleme özelliği korunmuştur.
+
+GÜVENLİK NOTU
+config.js içinde yalnızca Supabase Publishable/anon anahtarı kullanılır.
+SERVICE_ROLE anahtarı kesinlikle tarayıcıya konulmamalıdır.
